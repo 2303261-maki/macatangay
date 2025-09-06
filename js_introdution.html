@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #0077cc;
+        }
+        p {
+            font-size: 18px;
+        }
+        button {
+            background: #0077cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #005fa3;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #e0f7fa;
+            margin: 5px auto;
+            padding: 8px;
+            width: 200px;
+            border-radius: 5px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+
+    <script>
+        let items = ["Apple", "Banana", "Cherry"]; // array with fruits
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("demo").innerHTML = "asdasads";
+            document.getElementById("extra").innerHTML = "Javanice";
+            renderList();
+        });
+
+        function renderList() {
+            let ul = document.getElementById("list");
+            ul.innerHTML = ""; // clear list before re-rendering
+            items.forEach(item => {
+                let li = document.createElement("li");
+                li.textContent = item;
+                ul.appendChild(li);
+            });
+        }
+
+        function changeText() {
+            document.getElementById("demo").innerHTML = "You clicked the button!";
+        }
+
+        function toggleColor() {
+            let body = document.body;
+            if (body.style.background === "lightyellow") {
+                body.style.background = "#f4f4f9";
+            } else {
+                body.style.background = "lightyellow";
+            }
+        }
+
+        function addFruit() {
+            let input = document.getElementById("fruitInput");
+            let fruit = input.value.trim();
+            if (fruit !== "") {
+                items.push(fruit);  // <-- using push here
+                renderList();       // update the list
+                input.value = "";   // clear input box
+            } else {
+                alert("Please enter a fruit name!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>demo</h1>
+
+    <p id="demo">Hello, JS</p>
+    <p id="extra"></p>
+
+    <button onclick="changeText()">Change Text</button>
+    <button onclick="toggleColor()">Toggle Background</button>
+
+    <h2>My Favorite Fruits:</h2>
+    <ul id="list"></ul>
+
+    <!-- Input box + button to add fruit -->
+    <input type="text" id="fruitInput" placeholder="Enter a fruit">
+    <button onclick="addFruit()">Add Fruit</button>
+</body>
+</html>
